@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import CurrencySelector from './CurrencySelector';
+import BitcoinData from './BitcoinData';
 
 function App() {
+ const [currency, setCurrency] = useState('AUD')
+
+ const updateCurrency = (newCurrency) => {
+   setCurrency(newCurrency)
+ }
+  
   return (
     <div style={{ textAlign: 'center' }}>
-      <header>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+      <h1>Bitcoin Index</h1>
+      <CurrencySelector {...{currency, updateCurrency}}/>
+      <BitcoinData currency={currency}/>
     </div>
   );
 }
